@@ -1,0 +1,34 @@
+network:
+  vpc_name: "terraform-dev-vpc"
+  subnet_map:
+    terraform-dev-snet-pub:
+      cidr_range: "10.0.0.0/28"
+    terraform-dev-snet-app:
+      cidr_range: "10.0.1.0/24"
+    terraform-dev-snet-db:
+      cidr_range: "10.0.2.0/24"
+  cloud_router: "terraform-dev-router"
+  cloud_nat: "terraform-dev-nat"
+
+compute:
+  vms:
+    terraform-dev-bastion:
+      machine_type: "e2-medium"
+      disk_size: 50
+      zone: "asia-south1-a"
+      subnet_name: "terraform-dev-snet-pub"
+      tags: ["terraform", "dev"]
+      labels:
+        env: "dev"
+        managed_by: "terraform"
+        application: "test"
+    terraform-dev-app-1:
+      machine_type: "e2-medium"
+      disk_size: 50
+      zone: "asia-south1-a"
+      subnet_name: "terraform-dev-snet-app"
+      tags: ["terraform", "dev"]
+      labels:
+        env: "dev"
+        managed_by: "terraform"
+        application: "nginx"
