@@ -33,7 +33,7 @@ compute:
         managed_by: "terraform"
         application: "nginx"
     terraform-dev-app-2:
-      machine_type: "e2-large"
+      machine_type: "e2-medium"
       disk_size: 100
       zone: "asia-south1-a"
       subnet_name: "terraform-dev-snet-app"

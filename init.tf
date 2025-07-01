@@ -7,6 +7,12 @@ terraform {
       version = ">= 4.0.0"
     }
   }
+
+  # Configure the GCS remote backend
+  backend "gcs" {
+    bucket = "terraform-state-handler-poc"
+    prefix = "dev/state" # Optional: organize by environment/project
+  }
 }
 
 provider "google" {
